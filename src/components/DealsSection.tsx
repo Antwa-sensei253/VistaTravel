@@ -4,6 +4,7 @@ import { StarRating } from "./StarRating";
 import { MapPin, Percent, Clock } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 
 interface DealsSectionProps {
   onViewDetails: (pkg: TravelPackage) => void;
@@ -11,6 +12,7 @@ interface DealsSectionProps {
 
 export function DealsSection({ onViewDetails }: DealsSectionProps) {
   const { packages } = useTravel();
+  const { t } = useTranslation();
 
   // Get packages with lowest prices as "deals"
   const deals = packages
@@ -24,13 +26,13 @@ export function DealsSection({ onViewDetails }: DealsSectionProps) {
         <div className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-coral/20 text-coral px-4 py-2 rounded-full mb-4">
             <Percent className="w-4 h-4" />
-            <span className="font-semibold text-sm">Limited Time Offers</span>
+            <span className="font-semibold text-sm">{t("deals.limited_offers")}</span>
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
-            Hot Deals & Discounts
+            {t("deals.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Grab these amazing offers before they're gone! Save big on your dream destinations.
+            {t("deals.subtitle")}
           </p>
         </div>
 
@@ -44,13 +46,13 @@ export function DealsSection({ onViewDetails }: DealsSectionProps) {
             >
               {/* Discount Badge */}
               <Badge className="absolute top-4 left-4 z-10 bg-coral text-white font-bold px-3 py-1">
-                {20 + index * 5}% OFF
+                {20 + index * 5}{t("deals.off")}
               </Badge>
               
               {/* Timer Badge */}
               <div className="absolute top-4 right-4 z-10 bg-background/90 backdrop-blur-sm text-foreground text-xs font-medium px-3 py-1.5 rounded-full flex items-center gap-1">
                 <Clock className="w-3 h-3" />
-                {3 - index}d left
+                {3 - index} {t("deals.days_left")}
               </div>
 
               <div className="relative h-48 overflow-hidden">
@@ -64,11 +66,11 @@ export function DealsSection({ onViewDetails }: DealsSectionProps) {
 
               <div className="p-5">
                 <h3 className="font-display font-semibold text-lg mb-1">
-                  {pkg.title}
+                  {t(`mock_packages.${pkg.id}.title`, { defaultValue: pkg.title })}
                 </h3>
                 <div className="flex items-center gap-1 text-sm text-muted-foreground mb-3">
                   <MapPin className="w-3 h-3" />
-                  {pkg.location}
+                  {t(`mock_packages.${pkg.id}.location`, { defaultValue: pkg.location })}
                 </div>
 
                 <div className="flex items-center justify-between mb-4">
@@ -83,13 +85,13 @@ export function DealsSection({ onViewDetails }: DealsSectionProps) {
                     <span className="text-muted-foreground line-through text-sm">
                       ${Math.round(pkg.price * 1.3)}
                     </span>
-                    <span className="text-2xl font-bold text-coral ml-2">
+                    <span className="text-2xl font-bold text-coral mx-2">
                       ${pkg.price}
                     </span>
-                    <span className="text-xs text-muted-foreground">/night</span>
+                    <span className="text-xs text-muted-foreground">{t("deals.per_night")}</span>
                   </div>
                   <Button size="sm" className="bg-ocean hover:bg-ocean/90">
-                    Book Now
+                    {t("deals.book_now")}
                   </Button>
                 </div>
               </div>

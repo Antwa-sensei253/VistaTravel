@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { toast } from "sonner";
 import { Loader2, CreditCard, Lock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Replace with your actual publishable key or use an env variable
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || "pk_test_sample");
@@ -19,6 +20,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 
 const CheckoutForm = () => {
     const stripe = useStripe();
     const elements = useElements();
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
 
     const handleSubmit = async (event: React.FormEvent) => {
@@ -29,7 +31,7 @@ const CheckoutForm = () => {
             // Fallback for demo/mock environment without valid key
             setTimeout(() => {
                 setLoading(false);
-                toast.success("Payment successful! (Mock Mode)");
+                toast.success(t("payment_form.success_mock"));
             }, 2000);
             return;
         }
@@ -51,7 +53,7 @@ const CheckoutForm = () => {
         <form onSubmit={handleSubmit} className="space-y-6">
             <PaymentElement />
             <Button disabled={!stripe || loading} className="w-full">
-                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Pay Now"}
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t("payment_form.pay_now")}
             </Button>
         </form>
     );
@@ -59,6 +61,7 @@ const CheckoutForm = () => {
 
 // Fallback Mock Form if Stripe Key is missing or invalid for rendering
 const MockPaymentForm = () => {
+    const { t } = useTranslation();
     const [loading, setLoading] = useState(false);
 
     const handleMockPay = (e: React.FormEvent) => {
@@ -66,41 +69,41 @@ const MockPaymentForm = () => {
         setLoading(true);
         setTimeout(() => {
             setLoading(false);
-            toast.success("Payment successful! (Demo)");
+            toast.success(t("payment_form.success_demo"));
         }, 2000);
     };
 
     return (
         <form onSubmit={handleMockPay} className="space-y-4">
             <div className="space-y-2">
-                <Label htmlFor="card-number">Card Number</Label>
+                <Label htmlFor="card-number">{t("payment_form.card_number")}</Label>
                 <div className="relative">
                     <CreditCard className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                    <Input id="card-number" placeholder="0000 0000 0000 0000" className="pl-9" required />
+                    <Input id="card-number" placeholder={t("placeholders.card_number")} className="pl-9" required />
                 </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                    <Label htmlFor="expiry">Expiry</Label>
-                    <Input id="expiry" placeholder="MM/YY" required />
+                    <Label htmlFor="expiry">{t("payment_form.expiry")}</Label>
+                    <Input id="expiry" placeholder={t("placeholders.expiry")} required />
                 </div>
                 <div className="space-y-2">
-                    <Label htmlFor="cvc">CVC</Label>
+                    <Label htmlFor="cvc">{t("payment_form.cvc")}</Label>
                     <div className="relative">
                         <Lock className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
-                        <Input id="cvc" placeholder="123" className="pl-9" required />
+                        <Input id="cvc" placeholder={t("placeholders.cvc")} className="pl-9" required />
                     </div>
                 </div>
             </div>
             <div className="space-y-2">
-                <Label htmlFor="name">Cardholder Name</Label>
-                <Input id="name" placeholder="John Doe" required />
+                <Label htmlFor="name">{t("payment_form.cardholder")}</Label>
+                <Input id="name" placeholder={t("placeholders.cardholder")} required />
             </div>
             <Button type="submit" className="w-full" disabled={loading}>
-                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : "Pay Securely"}
+                {loading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : t("payment_form.pay_securely")}
             </Button>
             <p className="text-xs text-center text-muted-foreground flex items-center justify-center gap-1">
-                <Lock className="h-3 w-3" /> Secure SSL Encryption
+                <Lock className="h-3 w-3" /> {t("payment_form.ssl_encryption")}
             </p>
         </form>
     );
@@ -109,12 +112,13 @@ const MockPaymentForm = () => {
 export const PaymentForm = () => {
     // Check if we have a key to determine which form to render
     const hasStripeKey = !!import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
+    const { t } = useTranslation();
 
     return (
         <Card className="w-full max-w-md mx-auto shadow-lg">
             <CardHeader>
-                <CardTitle>Payment Details</CardTitle>
-                <CardDescription>Complete your booking securely.</CardDescription>
+                <CardTitle>{t("payment_form.title")}</CardTitle>
+                <CardDescription>{t("payment_form.desc")}</CardDescription>
             </CardHeader>
             <CardContent>
                 {hasStripeKey ? (

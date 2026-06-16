@@ -1,0 +1,293 @@
+{
+  "translation": {
+    "nav": {
+      "home": "Home",
+      "destinations": "Destinations",
+      "dashboard": "Dashboard",
+      "add_package": "Add Package",
+      "my_bookings": "My Bookings",
+      "provider_view": "Provider View",
+      "customer_view": "Customer View",
+      "switch_provider": "Switch to Provider",
+      "switch_customer": "Switch to Customer"
+    },
+    "home": {
+      "hero_title_1": "Discover Your Next",
+      "hero_title_2": "Adventure",
+      "hero_subtitle": "Explore breathtaking destinations, create unforgettable memories, and let your wanderlust lead the way.",
+      "explore_all": "Explore All Destinations"
+    },
+    "destinations": {
+      "title": "Explore Destinations",
+      "subtitle": "Find your perfect getaway",
+      "price": "Price",
+      "no_packages": "No packages match your filters. Try adjusting your criteria."
+    },
+    "categories": {
+      "beach": "Beach",
+      "mountain": "Mountain",
+      "city": "City",
+      "adventure": "Adventure"
+    },
+    "bookings": {
+      "title": "My Bookings",
+      "subtitle": "Manage your upcoming adventures",
+      "no_bookings": "No bookings yet. Start exploring destinations!",
+      "cancel": "Cancel",
+      "leave_review": "Leave Review",
+      "status_confirmed": "confirmed",
+      "status_completed": "completed",
+      "status_cancelled": "cancelled"
+    },
+    "provider": {
+      "title": "Provider Dashboard",
+      "subtitle": "Manage your travel packages",
+      "add_package": "Add Package",
+      "total_packages": "Total Packages",
+      "avg_rating": "Avg Rating",
+      "total_bookings": "Total Bookings",
+      "per_night": "/night",
+      "active": "Active",
+      "inactive": "Inactive"
+    },
+    "add_package": {
+      "edit_title": "Edit Package",
+      "add_title": "Add New Package",
+      "title_label": "Package Title *",
+      "location_label": "Location",
+      "description_label": "Description *",
+      "price_label": "Price per Night ($)",
+      "category_label": "Category",
+      "image_label": "Image URL *",
+      "update_btn": "Update Package",
+      "create_btn": "Create Package",
+      "cancel_btn": "Cancel",
+      "fill_required": "Please fill all required fields",
+      "package_updated": "✅ Package updated!",
+      "package_created": "🎉 Package created!"
+    },
+    "payment": {
+      "back_destinations": "Back to Destinations",
+      "checkout": "Checkout",
+      "order_summary": "Order Summary",
+      "detailed_package": "Detailed Travel Package",
+      "days_nights": "7 Days / 6 Nights",
+      "subtotal": "Subtotal",
+      "taxes_fees": "Taxes & Fees",
+      "total": "Total",
+      "free_cancellation": "Free Cancellation:",
+      "cancel_notice": "Cancel up to 48 hours before your trip for a full refund."
+    },
+    "not_found": {
+      "title": "404",
+      "message": "Oops! Page not found",
+      "return_home": "Return to Home"
+    },
+    "not_found": {
+      "title": "404",
+      "message": "Oops! Page not found",
+      "return_home": "Return to Home"
+    },
+    "deals": {
+      "limited_offers": "Limited Time Offers",
+      "title": "Hot Deals & Discounts",
+      "subtitle": "Grab these amazing offers before they're gone! Save big on your dream destinations.",
+      "off": "% OFF",
+      "days_left": "d left",
+      "per_night": "/night",
+      "book_now": "Book Now"
+    },
+    "featured": {
+      "title": "Featured Destinations",
+      "subtitle": "Hand-picked adventures waiting for you",
+      "per_night": "/night"
+    },
+    "popular_categories": {
+      "title": "Explore by Category",
+      "subtitle": "Find your perfect getaway based on the type of experience you're looking for.",
+      "destinations": "destinations"
+    },
+    "testimonials": {
+      "title": "What Travelers Say",
+      "subtitle": "Real stories from real adventurers who explored the world with us."
+    },
+    "why_choose_us": {
+      "title": "Why Choose VistaTravel?",
+      "subtitle": "We're not just another travel agency. We're your partners in creating unforgettable memories.",
+      "features": {
+        "deals_title": "Best Flight Deals",
+        "deals_desc": "We partner with top airlines to bring you unbeatable prices",
+        "secure_title": "Secure Booking",
+        "secure_desc": "Your payment and personal data are always protected",
+        "support_title": "24/7 Support",
+        "support_desc": "Our travel experts are here whenever you need help",
+        "curated_title": "Curated Experiences",
+        "curated_desc": "Handpicked adventures tailored just for you"
+      }
+    },
+    "newsletter": {
+      "tag": "Newsletter",
+      "title": "Get Exclusive Travel Deals",
+      "subtitle": "Subscribe to our newsletter and be the first to know about amazing destinations, special offers, and travel tips.",
+      "placeholder": "Enter your email",
+      "subscribe": "Subscribe",
+      "privacy": "No spam, unsubscribe anytime. We respect your privacy.",
+      "toast_title": "Thanks for subscribing! 🎉",
+      "toast_desc": "You'll receive our best travel deals in your inbox."
+    },
+    "footer": {
+      "brand_desc": "Discover extraordinary destinations and create memories that last a lifetime. Your adventure starts here.",
+      "quick_links": "Quick Links",
+      "all_destinations": "All Destinations",
+      "beach_getaways": "Beach Getaways",
+      "adventure_tours": "Adventure Tours",
+      "city_escapes": "City Escapes",
+      "contact_us": "Contact Us",
+      "stay_updated": "Stay Updated",
+      "newsletter_desc": "Subscribe to get special offers and travel inspiration.",
+      "email_placeholder": "Your email",
+      "copyright": "© 2024 VistaTravel. All rights reserved. Made by Ahmed Abdulrahim"
+    },
+    "search_widget": {
+      "where_to": "Where to?",
+      "destination_placeholder": "Search destinations...",
+      "check_in": "Check-in",
+      "check_out": "Check-out",
+      "add_date": "Add date",
+      "guests": "Guests"
+    },
+    "package_card": {
+      "from": "From",
+      "per_night": "/night",
+      "details": "Details"
+    },
+    "package_drawer": {
+      "amenities": "Amenities",
+      "per_night": "/night",
+      "book_now": "Book Now",
+      "full_name": "Full Name",
+      "email": "Email",
+      "check_in": "Check-in",
+      "check_out": "Check-out",
+      "date": "Date",
+      "confirm": "Confirm",
+      "reviews": "Reviews",
+      "fill_fields": "Please fill all fields"
+    },
+    "review_modal": {
+      "review": "Review",
+      "your_rating": "Your Rating",
+      "your_review": "Your Review",
+      "placeholder": "Share your experience...",
+      "submit": "Submit Review",
+      "toast_error": "Please write a comment",
+      "toast_title": "⭐ Review submitted!",
+      "toast_desc": "Thank you for your feedback!"
+    },
+    "payment_form": {
+      "title": "Payment Details",
+      "desc": "Complete your booking securely.",
+      "pay_now": "Pay Now",
+      "card_number": "Card Number",
+      "expiry": "Expiry",
+      "cvc": "CVC",
+      "cardholder": "Cardholder Name",
+      "pay_securely": "Pay Securely",
+      "ssl_encryption": "Secure SSL Encryption",
+      "success_demo": "Payment successful! (Demo)",
+      "success_mock": "Payment successful! (Mock Mode)"
+    },
+    "placeholders": {
+      "package_title": "Santorini Sunset Escape",
+      "location": "Santorini, Greece",
+      "description": "Describe your package...",
+      "image_url": "https://images.unsplash.com/...",
+      "card_number": "0000 0000 0000 0000",
+      "expiry": "MM/YY",
+      "cvc": "123",
+      "cardholder": "John Doe",
+      "full_name": "John Doe",
+      "email": "john@example.com"
+    },
+    "mock_packages": {
+      "1": {
+        "title": "Santorini Sunset Escape",
+        "location": "Santorini, Greece",
+        "description": "Experience the magic of Santorini with its iconic white-washed buildings and stunning sunsets. This package includes luxury accommodation overlooking the caldera, daily breakfast, and a private sunset cruise."
+      },
+      "2": {
+        "title": "Swiss Alps Adventure",
+        "location": "Zermatt, Switzerland",
+        "description": "Embark on an unforgettable journey through the majestic Swiss Alps. Enjoy breathtaking mountain views, world-class skiing, and cozy alpine lodges with traditional Swiss hospitality."
+      },
+      "3": {
+        "title": "Tokyo City Explorer",
+        "location": "Tokyo, Japan",
+        "description": "Dive into the vibrant culture of Tokyo! From ancient temples to neon-lit streets, experience the perfect blend of tradition and modernity. Includes guided tours and authentic culinary experiences."
+      },
+      "4": {
+        "title": "Costa Rica Rainforest Trek",
+        "location": "Arenal, Costa Rica",
+        "description": "Discover the incredible biodiversity of Costa Rica's rainforests. Zip-line through the canopy, spot exotic wildlife, and relax in natural hot springs surrounded by lush greenery."
+      },
+      "5": {
+        "title": "Maldives Paradise Retreat",
+        "location": "Maldives",
+        "description": "Escape to paradise in the Maldives. Stay in an overwater bungalow, snorkel with tropical fish, and enjoy world-class spa treatments in this idyllic island destination."
+      },
+      "6": {
+        "title": "Patagonia Expedition",
+        "location": "Patagonia, Chile",
+        "description": "Journey to the end of the world in Patagonia. Trek through Torres del Paine, witness massive glaciers, and experience the raw beauty of South America's wild frontier."
+      },
+      "7": {
+        "title": "Paris Romance Package",
+        "location": "Paris, France",
+        "description": "Fall in love with the City of Light. Stroll along the Seine, visit world-famous museums, and indulge in exquisite French cuisine at charming bistros."
+      },
+      "8": {
+        "title": "Norwegian Fjords Voyage",
+        "location": "Bergen, Norway",
+        "description": "Cruise through Norway's spectacular fjords, witness the Northern Lights, and explore charming fishing villages nestled between towering mountains."
+      }
+    },
+    "amenities": {
+      "Pool": "Pool",
+      "WiFi": "WiFi",
+      "Breakfast": "Breakfast",
+      "Ocean View": "Ocean View",
+      "Spa": "Spa",
+      "Airport Transfer": "Airport Transfer",
+      "Ski Pass": "Ski Pass",
+      "Mountain View": "Mountain View",
+      "Fireplace": "Fireplace",
+      "City Tours": "City Tours",
+      "Metro Pass": "Metro Pass",
+      "Tea Ceremony": "Tea Ceremony",
+      "Sushi Class": "Sushi Class",
+      "Guided Treks": "Guided Treks",
+      "Zip-lining": "Zip-lining",
+      "Hot Springs": "Hot Springs",
+      "Wildlife Tours": "Wildlife Tours",
+      "Meals Included": "Meals Included",
+      "Private Pool": "Private Pool",
+      "Snorkeling": "Snorkeling",
+      "All-Inclusive": "All-Inclusive",
+      "Butler Service": "Butler Service",
+      "Sunset Cruise": "Sunset Cruise",
+      "Expert Guides": "Expert Guides",
+      "Camping Gear": "Camping Gear",
+      "Meals": "Meals",
+      "Glacier Tour": "Glacier Tour",
+      "Wildlife Watching": "Wildlife Watching",
+      "Museum Pass": "Museum Pass",
+      "Seine Cruise": "Seine Cruise",
+      "Eiffel Tower Access": "Eiffel Tower Access",
+      "Wine Tasting": "Wine Tasting",
+      "Fjord Cruise": "Fjord Cruise",
+      "Northern Lights Tour": "Northern Lights Tour",
+      "Guided Hikes": "Guided Hikes",
+      "Scenic Train": "Scenic Train"
+    }
+  }
+}

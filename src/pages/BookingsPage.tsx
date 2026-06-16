@@ -7,22 +7,24 @@ import { format } from "date-fns";
 import { Calendar, MapPin, X, Star } from "lucide-react";
 import { useState } from "react";
 import { ReviewModal } from "@/components/ReviewModal";
+import { useTranslation } from "react-i18next";
 
 export default function BookingsPage() {
   const { bookings, cancelBooking } = useTravel();
   const [reviewBookingId, setReviewBookingId] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   const activeBooking = bookings.find((b) => b.id === reviewBookingId);
 
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-display font-bold mb-2">My Bookings</h1>
-        <p className="text-muted-foreground mb-8">Manage your upcoming adventures</p>
+        <h1 className="text-3xl font-display font-bold mb-2">{t("bookings.title")}</h1>
+        <p className="text-muted-foreground mb-8">{t("bookings.subtitle")}</p>
 
         {bookings.length === 0 ? (
           <div className="text-center py-16 text-muted-foreground">
-            No bookings yet. Start exploring destinations!
+            {t("bookings.no_bookings")}
           </div>
         ) : (
           <div className="grid gap-4">
@@ -52,7 +54,7 @@ export default function BookingsPage() {
                           : "destructive"
                       }
                     >
-                      {booking.status}
+                      {t(`bookings.status_${booking.status}`)}
                     </Badge>
                   </div>
                   <div className="flex items-center gap-2 mt-2">
@@ -64,12 +66,12 @@ export default function BookingsPage() {
                         className="text-destructive"
                         onClick={() => cancelBooking(booking.id)}
                       >
-                        <X className="w-4 h-4 mr-1" /> Cancel
+                        <X className="w-4 h-4 mx-1" /> {t("bookings.cancel")}
                       </Button>
                     )}
                     {booking.status === "completed" && !booking.hasReview && (
                       <Button size="sm" variant="outline" onClick={() => setReviewBookingId(booking.id)}>
-                        <Star className="w-4 h-4 mr-1" /> Leave Review
+                        <Star className="w-4 h-4 mx-1" /> {t("bookings.leave_review")}
                       </Button>
                     )}
                   </div>

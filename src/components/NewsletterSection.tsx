@@ -3,15 +3,17 @@ import { Send, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
 
 export function NewsletterSection() {
   const [email, setEmail] = useState("");
+  const { t } = useTranslation();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (email) {
-      toast.success("Thanks for subscribing! 🎉", {
-        description: "You'll receive our best travel deals in your inbox.",
+      toast.success(t("newsletter.toast_title"), {
+        description: t("newsletter.toast_desc"),
       });
       setEmail("");
     }
@@ -28,21 +30,20 @@ export function NewsletterSection() {
           <div className="relative z-10 max-w-2xl mx-auto text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/20 px-4 py-2 rounded-full mb-6">
               <Mail className="w-4 h-4" />
-              <span className="text-sm font-medium">Newsletter</span>
+              <span className="text-sm font-medium">{t("newsletter.tag")}</span>
             </div>
             
             <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">
-              Get Exclusive Travel Deals
+              {t("newsletter.title")}
             </h2>
             <p className="text-white/80 mb-8">
-              Subscribe to our newsletter and be the first to know about amazing destinations, 
-              special offers, and travel tips.
+              {t("newsletter.subtitle")}
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
               <Input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t("newsletter.placeholder")}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 className="h-12 bg-white/20 border-white/30 text-white placeholder:text-white/60 flex-1"
@@ -53,13 +54,13 @@ export function NewsletterSection() {
                 size="lg"
                 className="h-12 bg-sand hover:bg-sand/90 text-foreground font-semibold gap-2"
               >
-                Subscribe
-                <Send className="w-4 h-4" />
+                {t("newsletter.subscribe")}
+                <Send className="w-4 h-4 rtl:-scale-x-100" />
               </Button>
             </form>
 
             <p className="text-xs text-white/60 mt-4">
-              No spam, unsubscribe anytime. We respect your privacy.
+              {t("newsletter.privacy")}
             </p>
           </div>
         </div>

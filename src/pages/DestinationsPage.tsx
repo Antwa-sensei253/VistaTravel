@@ -9,12 +9,13 @@ import { Button } from "@/components/ui/button";
 import { Slider } from "@/components/ui/slider";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
-const categories: { value: Category; label: string; icon: string }[] = [
-  { value: "beach", label: "Beach", icon: "🏖️" },
-  { value: "mountain", label: "Mountain", icon: "⛰️" },
-  { value: "city", label: "City", icon: "🏙️" },
-  { value: "adventure", label: "Adventure", icon: "🎯" },
+const categories: { value: Category; icon: string }[] = [
+  { value: "beach", icon: "🏖️" },
+  { value: "mountain", icon: "⛰️" },
+  { value: "city", icon: "🏙️" },
+  { value: "adventure", icon: "🎯" },
 ];
 
 export default function DestinationsPage() {
@@ -22,6 +23,7 @@ export default function DestinationsPage() {
   const [selectedPackage, setSelectedPackage] = useState<TravelPackage | null>(null);
   const [selectedCategories, setSelectedCategories] = useState<Category[]>([]);
   const [priceRange, setPriceRange] = useState([0, 1000]);
+  const { t } = useTranslation();
 
   const toggleCategory = (cat: Category) => {
     setSelectedCategories((prev) =>
@@ -39,8 +41,8 @@ export default function DestinationsPage() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-display font-bold mb-2">Explore Destinations</h1>
-        <p className="text-muted-foreground mb-8">Find your perfect getaway</p>
+        <h1 className="text-3xl font-display font-bold mb-2">{t("destinations.title")}</h1>
+        <p className="text-muted-foreground mb-8">{t("destinations.subtitle")}</p>
 
         {/* Filters */}
         <div className="bg-muted/50 rounded-2xl p-4 mb-8">
@@ -56,12 +58,12 @@ export default function DestinationsPage() {
                   )}
                   onClick={() => toggleCategory(cat.value)}
                 >
-                  {cat.icon} {cat.label}
+                  {cat.icon} {t(`categories.${cat.value}`)}
                 </Badge>
               ))}
             </div>
             <div className="flex items-center gap-4 ml-auto">
-              <span className="text-sm text-muted-foreground">Price: ${priceRange[0]} - ${priceRange[1]}</span>
+              <span className="text-sm text-muted-foreground">{t("destinations.price")}: ${priceRange[0]} - ${priceRange[1]}</span>
               <Slider
                 value={priceRange}
                 onValueChange={setPriceRange}
@@ -82,7 +84,7 @@ export default function DestinationsPage() {
 
         {filteredPackages.length === 0 && (
           <div className="text-center py-16 text-muted-foreground">
-            No packages match your filters. Try adjusting your criteria.
+            {t("destinations.no_packages")}
           </div>
         )}
       </div>

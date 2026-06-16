@@ -13,9 +13,11 @@ import { TravelPackage } from "@/types/travel";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 export default function HomePage() {
   const [selectedPackage, setSelectedPackage] = useState<TravelPackage | null>(null);
+  const { t } = useTranslation();
 
   return (
     <Layout>
@@ -32,12 +34,11 @@ export default function HomePage() {
 
         <div className="relative z-10 container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 animate-fade-in">
-            Discover Your Next
-            <span className="block text-sand">Adventure</span>
+            {t("home.hero_title_1")}
+            <span className="block text-sand">{t("home.hero_title_2")}</span>
           </h1>
           <p className="text-lg sm:text-xl text-white/90 mb-8 max-w-2xl mx-auto animate-fade-in">
-            Explore breathtaking destinations, create unforgettable memories, and let your
-            wanderlust lead the way.
+            {t("home.hero_subtitle")}
           </p>
 
           <div className="mb-8 animate-fade-in" style={{ animationDelay: "200ms" }}>
@@ -50,8 +51,8 @@ export default function HomePage() {
               className="bg-coral hover:bg-coral/90 text-white gap-2 animate-fade-in"
               style={{ animationDelay: "400ms" }}
             >
-              Explore All Destinations
-              <ArrowRight className="w-5 h-5" />
+              {t("home.explore_all")}
+              <ArrowRight className="w-5 h-5 rtl:-scale-x-100" />
             </Button>
           </Link>
         </div>

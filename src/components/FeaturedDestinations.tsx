@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { StarRating } from "./StarRating";
 import { ChevronLeft, ChevronRight, MapPin, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useTranslation } from "react-i18next";
 
 interface FeaturedDestinationsProps {
   onViewDetails: (pkg: TravelPackage) => void;
@@ -13,6 +14,7 @@ interface FeaturedDestinationsProps {
 export function FeaturedDestinations({ onViewDetails }: FeaturedDestinationsProps) {
   const { packages } = useTravel();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const featured = packages
     .filter((p) => p.isActive)
@@ -35,10 +37,10 @@ export function FeaturedDestinations({ onViewDetails }: FeaturedDestinationsProp
         <div className="flex items-center justify-between mb-8">
           <div>
             <h2 className="text-3xl font-display font-bold mb-2 flex items-center gap-2">
-              Featured Destinations <Sparkles className="w-7 h-7 text-sand" />
+              {t("featured.title")} <Sparkles className="w-7 h-7 text-sand" />
             </h2>
             <p className="text-muted-foreground">
-              Hand-picked adventures waiting for you
+              {t("featured.subtitle")}
             </p>
           </div>
           <div className="hidden sm:flex gap-2">
@@ -48,7 +50,7 @@ export function FeaturedDestinations({ onViewDetails }: FeaturedDestinationsProp
               onClick={() => scroll("left")}
               className="rounded-full"
             >
-              <ChevronLeft className="w-4 h-4" />
+              <ChevronLeft className="w-4 h-4 rtl:-scale-x-100" />
             </Button>
             <Button
               variant="outline"
@@ -56,7 +58,7 @@ export function FeaturedDestinations({ onViewDetails }: FeaturedDestinationsProp
               onClick={() => scroll("right")}
               className="rounded-full"
             >
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4 rtl:-scale-x-100" />
             </Button>
           </div>
         </div>
@@ -85,17 +87,17 @@ export function FeaturedDestinations({ onViewDetails }: FeaturedDestinationsProp
                 
                 <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
                   <h3 className="font-display font-semibold text-lg mb-1">
-                    {pkg.title}
+                    {t(`mock_packages.${pkg.id}.title`, { defaultValue: pkg.title })}
                   </h3>
                   <div className="flex items-center gap-1 text-sm opacity-90 mb-2">
                     <MapPin className="w-3 h-3" />
-                    {pkg.location}
+                    {t(`mock_packages.${pkg.id}.location`, { defaultValue: pkg.location })}
                   </div>
                   <div className="flex items-center justify-between">
                     <StarRating rating={pkg.rating} size="sm" />
                     <span className="font-bold">
                       ${pkg.price}
-                      <span className="text-xs font-normal opacity-80">/night</span>
+                      <span className="text-xs font-normal opacity-80">{t("featured.per_night")}</span>
                     </span>
                   </div>
                 </div>

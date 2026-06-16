@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Palmtree, Mountain, Building2, Compass } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 const categories = [
   {
@@ -34,6 +35,7 @@ const categories = [
 
 export function PopularCategories() {
   const navigate = useNavigate();
+  const { t } = useTranslation();
 
   const handleCategoryClick = (categoryId: string) => {
     navigate(`/destinations?category=${categoryId}`);
@@ -44,10 +46,10 @@ export function PopularCategories() {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3">
-            Explore by Category
+            {t("popular_categories.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Find your perfect getaway based on the type of experience you're looking for.
+            {t("popular_categories.subtitle")}
           </p>
         </div>
 
@@ -72,9 +74,9 @@ export function PopularCategories() {
                     <category.icon className="w-7 h-7" />
                   </div>
                   <h3 className="font-display font-semibold text-xl mb-1">
-                    {category.name}
+                    {t(`categories.${category.id}`)}
                   </h3>
-                  <p className="text-sm opacity-80">{category.count} destinations</p>
+                  <p className="text-sm opacity-80">{category.count} {t("popular_categories.destinations")}</p>
                 </div>
               </div>
             </div>

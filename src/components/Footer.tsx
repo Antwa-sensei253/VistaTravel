@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import { Compass, Mail, Phone, MapPin, Instagram, Twitter, Facebook } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useTranslation } from "react-i18next";
 
 export function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className="bg-foreground text-background py-12 px-4">
       <div className="container mx-auto">
@@ -17,8 +19,7 @@ export function Footer() {
               <span className="text-xl font-display font-bold">VistaTravel</span>
             </Link>
             <p className="text-background/70 text-sm mb-4">
-              Discover extraordinary destinations and create memories that last a
-              lifetime. Your adventure starts here.
+              {t("footer.brand_desc")}
             </p>
             <div className="flex gap-3">
               <Button size="icon" variant="ghost" className="rounded-full hover:bg-background/10">
@@ -35,26 +36,26 @@ export function Footer() {
 
           {/* Quick Links */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Quick Links</h4>
+            <h4 className="font-display font-semibold mb-4">{t("footer.quick_links")}</h4>
             <ul className="space-y-2 text-sm text-background/70">
               <li>
                 <Link to="/destinations" className="hover:text-background transition-colors">
-                  All Destinations
+                  {t("footer.all_destinations")}
                 </Link>
               </li>
               <li>
                 <Link to="/destinations?category=beach" className="hover:text-background transition-colors">
-                  Beach Getaways
+                  {t("footer.beach_getaways")}
                 </Link>
               </li>
               <li>
                 <Link to="/destinations?category=adventure" className="hover:text-background transition-colors">
-                  Adventure Tours
+                  {t("footer.adventure_tours")}
                 </Link>
               </li>
               <li>
                 <Link to="/destinations?category=city" className="hover:text-background transition-colors">
-                  City Escapes
+                  {t("footer.city_escapes")}
                 </Link>
               </li>
             </ul>
@@ -62,7 +63,7 @@ export function Footer() {
 
           {/* Contact */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Contact Us</h4>
+            <h4 className="font-display font-semibold mb-4">{t("footer.contact_us")}</h4>
             <ul className="space-y-3 text-sm text-background/70">
               <li className="flex items-center gap-2">
                 <Mail className="w-4 h-4" />
@@ -81,13 +82,13 @@ export function Footer() {
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-display font-semibold mb-4">Stay Updated</h4>
+            <h4 className="font-display font-semibold mb-4">{t("footer.stay_updated")}</h4>
             <p className="text-sm text-background/70 mb-4">
-              Subscribe to get special offers and travel inspiration.
+              {t("footer.newsletter_desc")}
             </p>
             <div className="flex gap-2">
               <Input
-                placeholder="Your email"
+                placeholder={t("footer.email_placeholder")}
                 className="bg-background/10 border-background/20 text-background placeholder:text-background/50"
               />
               <Button className="bg-coral hover:bg-coral/90">
@@ -98,7 +99,7 @@ export function Footer() {
         </div>
 
         <div className="border-t border-background/10 pt-8 text-center text-sm text-background/50">
-          <p>© 2024 VistaTravel. All rights reserved. Made by Ahmed Abdulrahim</p>
+          <p>{t("footer.copyright")}</p>
         </div>
       </div>
     </footer>

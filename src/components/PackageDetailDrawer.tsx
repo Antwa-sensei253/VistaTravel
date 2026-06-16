@@ -13,6 +13,7 @@ import { format } from "date-fns";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { Calendar as CalendarComponent } from "@/components/ui/calendar";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 interface PackageDetailDrawerProps {
   package_: TravelPackage | null;
@@ -23,6 +24,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
   const { addBooking, getPackageReviews } = useTravel();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [showBookingForm, setShowBookingForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -36,7 +38,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
 
   const handleBooking = () => {
     if (!package_ || !formData.name || !formData.email || !formData.checkIn || !formData.checkOut) {
-      toast({ title: "Please fill all fields", variant: "destructive" });
+      toast({ title: t("package_drawer.fill_fields"), variant: "destructive" });
       return;
     }
 
@@ -72,7 +74,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
     <Sheet open={!!package_} onOpenChange={() => onClose()}>
       <SheetContent className="w-full sm:max-w-lg overflow-y-auto">
         <SheetHeader>
-          <SheetTitle className="text-left">{package_.title}</SheetTitle>
+          <SheetTitle className="text-left">{t(`mock_packages.${package_.id}.title`, { defaultValue: package_.title })}</SheetTitle>
         </SheetHeader>
 
         <div className="mt-4 space-y-6">
@@ -85,7 +87,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
               <MapPin className="w-4 h-4 text-muted-foreground" />
-              <span className="text-muted-foreground">{package_.location}</span>
+              <span className="text-muted-foreground">{t(`mock_packages.${package_.id}.location`, { defaultValue: package_.location })}</span>
             </div>
             <div className="flex items-center gap-2">
               <StarRating rating={package_.rating} size="sm" showValue />
@@ -93,13 +95,13 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
             </div>
           </div>
 
-          <p className="text-muted-foreground">{package_.description}</p>
+          <p className="text-muted-foreground">{t(`mock_packages.${package_.id}.description`, { defaultValue: package_.description })}</p>
 
           <div>
-            <h4 className="font-semibold mb-2">Amenities</h4>
+            <h4 className="font-semibold mb-2">{t("package_drawer.amenities")}</h4>
             <div className="flex flex-wrap gap-2">
               {package_.amenities.map((amenity) => (
-                <Badge key={amenity} variant="secondary">{amenity}</Badge>
+                <Badge key={amenity} variant="secondary">{t(`amenities.${amenity}`, { defaultValue: amenity })}</Badge>
               ))}
             </div>
           </div>
@@ -108,41 +110,41 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
             <div className="flex items-center justify-between mb-4">
               <span className="text-2xl font-bold text-primary">
                 ${package_.price}
-                <span className="text-sm font-normal text-muted-foreground">/night</span>
+                <span className="text-sm font-normal text-muted-foreground">{t("package_drawer.per_night")}</span>
               </span>
             </div>
 
             {!showBookingForm ? (
               <Button onClick={() => setShowBookingForm(true)} className="w-full bg-ocean-gradient">
-                Book Now
+                {t("package_drawer.book_now")}
               </Button>
             ) : (
               <div className="space-y-4">
                 <div>
-                  <Label>Full Name</Label>
+                  <Label>{t("package_drawer.full_name")}</Label>
                   <Input
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="John Doe"
+                    placeholder={t("placeholders.full_name")}
                   />
                 </div>
                 <div>
-                  <Label>Email</Label>
+                  <Label>{t("package_drawer.email")}</Label>
                   <Input
                     type="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="john@example.com"
+                    placeholder={t("placeholders.email")}
                   />
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   <div>
-                    <Label>Check-in</Label>
+                    <Label>{t("package_drawer.check_in")}</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button variant="outline" className="w-full justify-start">
                           <Calendar className="w-4 h-4 mr-2" />
-                          {formData.checkIn ? format(formData.checkIn, "MMM dd") : "Date"}
+                          {formData.checkIn ? format(formData.checkIn, "MMM dd") : t("package_drawer.date")}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -156,12 +158,12 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
                     </Popover>
                   </div>
                   <div>
-                    <Label>Check-out</Label>
+                    <Label>{t("package_drawer.check_out")}</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button variant="outline" className="w-full justify-start">
                           <Calendar className="w-4 h-4 mr-2" />
-                          {formData.checkOut ? format(formData.checkOut, "MMM dd") : "Date"}
+                          {formData.checkOut ? format(formData.checkOut, "MMM dd") : t("package_drawer.date")}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -177,7 +179,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
                 </div>
                 <div className="flex gap-2">
                   <Button onClick={handleBooking} className="flex-1 bg-ocean-gradient">
-                    <Check className="w-4 h-4 mr-2" /> Confirm
+                    <Check className="w-4 h-4 mr-2" /> {t("package_drawer.confirm")}
                   </Button>
                   <Button variant="outline" onClick={() => setShowBookingForm(false)}>
                     <X className="w-4 h-4" />
@@ -189,7 +191,7 @@ export function PackageDetailDrawer({ package_, onClose }: PackageDetailDrawerPr
 
           {reviews.length > 0 && (
             <div>
-              <h4 className="font-semibold mb-3">Reviews ({reviews.length})</h4>
+              <h4 className="font-semibold mb-3">{t("package_drawer.reviews")} ({reviews.length})</h4>
               <div className="space-y-3">
                 {reviews.slice(0, 3).map((review) => (
                   <div key={review.id} className="bg-muted/50 p-3 rounded-lg">

@@ -1,9 +1,11 @@
 import { useTravel } from "@/context/TravelContext";
 import { StarRating } from "./StarRating";
 import { Quote, MessageCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export function TestimonialsSection() {
   const { reviews, getPackageById } = useTravel();
+  const { t } = useTranslation();
 
   // Get top reviews
   const topReviews = reviews
@@ -15,10 +17,10 @@ export function TestimonialsSection() {
       <div className="container mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-3 flex items-center justify-center gap-2">
-            What Travelers Say <MessageCircle className="w-7 h-7 text-ocean" />
+            {t("testimonials.title")} <MessageCircle className="w-7 h-7 text-ocean" />
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Real stories from real adventurers who explored the world with us.
+            {t("testimonials.subtitle")}
           </p>
         </div>
 
@@ -40,7 +42,7 @@ export function TestimonialsSection() {
                   <div>
                     <h4 className="font-semibold">{review.userName}</h4>
                     <p className="text-xs text-muted-foreground">
-                      {pkg?.title || "Travel Experience"}
+                      {pkg ? t(`mock_packages.${pkg.id}.title`, { defaultValue: pkg.title }) : t("testimonials.travel_experience", "Travel Experience")}
                     </p>
                   </div>
                 </div>
